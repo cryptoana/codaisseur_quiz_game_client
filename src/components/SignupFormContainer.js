@@ -53,7 +53,7 @@ render() {
 
 const mapStateToProps = (state) => {
   return {
-      user: state.user
+      player: state.player
   }
 }
 
