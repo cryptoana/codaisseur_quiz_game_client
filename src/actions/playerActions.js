@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const baseUrl = 'http://localhost:3002 || ';
+const baseUrl = 'http://localhost:3002'
 
 export const SET_ERROR = 'SET_ERROR';
 
