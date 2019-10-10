@@ -1,20 +1,39 @@
 import React, { Component } from 'react'
-import store from './store'
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom';
 import HomepageContainer from './components/HomepageContainer';
+import LobbyContainer from './components/lobby/LobbyContainer';
+import SignupFormContainer from './components/signup/SignupFormContainer'
+import LoginFormContainer from './components/login/LoginFormContainer'
+import RoomContainer from './components/room/RoomContainer'
 
 
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
         <BrowserRouter>
-          <HomepageContainer />
+          <main>
+              <React.Fragment>
+                {(this.props.player.jwt) ? // if user is logged in, display LobbyContainer, otherwise go to HomepageContainer
+                  <React.Fragment>
+                    <Route exact path="/" component={LobbyContainer} />
+                    <Route path path="/room/:id" component={RoomContainer} />
+                  </React.Fragment>
+                :
+                  <Route exact path="/" component={HomepageContainer} />
+                }
+              </React.Fragment>
+          </main>
         </BrowserRouter>
-      </Provider>
     )
   }
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    player: state.player
+  }
+}
+      
+
+export default connect(mapStateToProps)(App)

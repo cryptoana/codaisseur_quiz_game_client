@@ -1,5 +1,6 @@
 import request from 'superagent';
 
+// add https://infinite-lake-40479.herokuapp.com/
 const baseUrl = 'http://localhost:4050';
 
 export const SET_ERROR = 'SET_ERROR';
@@ -7,15 +8,16 @@ export const SET_ERROR = 'SET_ERROR';
 // User login
 export const PLAYER_LOGIN = 'PLAYER_LOGIN';
 export const login = (email, password) => {
+    console.log(email, password)
     return (dispatch) => {
         request
             .post(`${baseUrl}/login`)
             .send({ email, password })
             .then(response => {
-                const {jwt, playerId, username} = response.body;
+                const {jwt, playerId, name} = response.body;
                 dispatch({
                     type: PLAYER_LOGIN,
-                    payload: {jwt, playerId, username}
+                    payload: {jwt, playerId, name}
                 })
             })
             .catch(error => {
@@ -28,15 +30,16 @@ export const login = (email, password) => {
     }
 }
 
-// User signup
+// Player signup
 export const PLAYER_SIGNUP = 'PLAYER_SIGNUP';
 export const signup = (data) => {
+    console.log(data)
     return (dispatch) => {
         request
             .post(`${baseUrl}/signup`)
             .send(data)
             .then(() => {
-                // If user is created successfully, login user
+                // If player is created successfully, login player
                 return request
                     .post(`${baseUrl}/login`)
                     .send({email: data.email, password: data.password});
@@ -48,7 +51,7 @@ export const signup = (data) => {
                 })
             })
             .catch(error => {
-                console.error(error);
+                console.log(error);
                 dispatch({
                     type: SET_ERROR,
                     payload: error.response.body.message

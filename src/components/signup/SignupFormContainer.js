@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signup } from '../actions/playerActions';
+import { signup } from '../../actions/playerActions';
 import SignupForm from './SignupForm';
 
 class SignupFormContainer extends React.Component {
@@ -9,7 +9,7 @@ class SignupFormContainer extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.signup(this.state.name, this.state.email, this.state.password)
+    this.props.signup(this.state)
   }
 
   onChange = (event) => {

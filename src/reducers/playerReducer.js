@@ -1,4 +1,4 @@
-import { SET_ERROR, PLAYER_LOGIN } from '../actions/playerActions';
+import { SET_ERROR, PLAYER_LOGIN, PLAYER_SIGNUP } from '../actions/playerActions';
 
 const initialState = {
     jwt: null,
@@ -12,6 +12,8 @@ export default function (state = initialState, action = {}) {
         case SET_ERROR:
             return { ...state, error: action.payload };
         case PLAYER_LOGIN:
+            return { ...state, ...action.payload, error: null };
+        case PLAYER_SIGNUP:
             return { ...state, ...action.payload, error: null };
         default:
             return state;
