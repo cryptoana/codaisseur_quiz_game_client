@@ -34,7 +34,7 @@ export default function CreateForm (props) {
 
         <button type='submit'>Submit</button>
       </form>
-      <p>Have an account? <Link to="/login">Log in</Link></p>
+      {/* <p>Have an account? <Link to="/login">Log in</Link></p> */}
     </div>
   )
 }

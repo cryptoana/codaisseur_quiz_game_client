@@ -5,11 +5,10 @@ import LoginFormContainer from './login/LoginFormContainer';
 class HomepageContainer extends Component {
   render () {
     return (
-      <div>
-        <h1>Welcome to Codaissuer Quiz Game!</h1>
-        <h3>Create an account</h3>
+      <div className = "Signup">
+        <h1>Welcome to Codaisseur Quiz Game!</h1>
+        <h3 className="form"></h3>
         <SignupFormContainer />
-        <h3>Login here</h3>
         <LoginFormContainer />
       </div>
     )

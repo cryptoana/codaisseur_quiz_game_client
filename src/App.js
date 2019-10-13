@@ -6,7 +6,7 @@ import LobbyContainer from './components/lobby/LobbyContainer';
 import SignupFormContainer from './components/signup/SignupFormContainer'
 import LoginFormContainer from './components/login/LoginFormContainer'
 import RoomContainer from './components/room/RoomContainer'
-
+import './App.css';
 
 class App extends Component {
   render () {

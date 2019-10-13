@@ -21,6 +21,7 @@ class LoginFormContainer extends React.Component {
   render() {
     return (
         <React.Fragment>
+            <p className="form"><b>Login</b> to play the most awesome game on the planet.</p>
             {this.props.player.jwt && 
                 <Redirect to='/' />
             }

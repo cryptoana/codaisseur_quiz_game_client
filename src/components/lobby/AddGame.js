@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import * as request from "superagent";
 // import { url } from "../constants";
 import { connect } from "react-redux";
+import {addNewRoom} from '../../actions/game'
 
 class AddGame extends Component {
   state = {
-    name: "Type here....."
+    name: ""
   };
   onChange = event => {
     this.setState({ name: event.target.value });
@@ -16,6 +17,12 @@ class AddGame extends Component {
     request
       .post(`http://localhost:4050/room`)
       .send({ name: this.state.name })
+      .then(result => {
+        console.log('res', result.body)
+        this.props.addNewRoom(result.body)
+        
+        
+      })
       .catch(error => console.log("got an error", error));
   };
 
@@ -26,14 +33,15 @@ class AddGame extends Component {
 
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <p class="createRoom">Create a room:</p>
+        <form className="createRoom" onSubmit={this.onSubmit}>
           <input
             name="newMessage"
             type="text"
             onChange={this.onChange}
             value={this.state.name}
           ></input>
-          <button type="submit">Send!</button>
+          <button className="createRoomButton" type="submit">Yes, give a hotel room!</button>
         </form>
       </div>
     );
@@ -45,5 +53,5 @@ function mapStateToProps(reduxState) {
 
 export default connect(
   mapStateToProps,
-  null
+  {addNewRoom}
 )(AddGame);

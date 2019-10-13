@@ -33,7 +33,7 @@ render() {
           }
           {!this.props.player.jwt &&
               <React.Fragment>
-                  <p>Sign up to play the most awesome game on the planet.</p>
+                  <p className="form"><b>Sign up</b> to play the most awesome game on the planet.</p>
                   {this.props.player.error &&
                       <div className="alert alert-danger" role="alert">
                           {this.props.player.error}

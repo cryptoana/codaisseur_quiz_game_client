@@ -51,11 +51,11 @@ export const signup = (data) => {
                 })
             })
             .catch(error => {
-                console.log(error);
-                dispatch({
-                    type: SET_ERROR,
-                    payload: error.response.body.message
-                })
+                console.log('error',error);
+                // dispatch({
+                //     type: SET_ERROR,
+                //     payload: error.response.body.message
+                // })
             })
     }
 }

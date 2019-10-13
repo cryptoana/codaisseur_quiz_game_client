@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import Room from './Room'
 import superagent from 'superagent'
 import AddGame from './AddGame'
+import {addLobbyItems} from '../../actions/game'
+import {connect} from 'react-redux'
 
 class LobbyContainer extends Component {
-  state = {
-    rooms: []
-  }
+  // state = {
+  //   rooms: []
+  // }
 
   componentDidMount = () => {
     console.log("hello")
@@ -14,18 +16,21 @@ class LobbyContainer extends Component {
         .get('http://localhost:4050/room')
         .then(res => {
           console.log("fetch data test", res.body)
-          this.setState({rooms: res.body})
+          // this.setState({rooms: res.body})
+          this.props.addLobbyItems(res.body)
+
         })
 
   }
 
   render () {
-    console.log(this.state)
+    console.log(this.props)
+    if(!this.props.rooms) return 'waiting for rooms'
     return (
       <div>
-        <h2>Please choose a game</h2>
-        <div>
-          {this.state.rooms.map(room => {
+        <h1>Please choose a game</h1>
+        <div className="room">
+          {this.props.rooms.map(room => {
             return <Room room={room} history={this.props.history} /> })
           }
         </div>
@@ -34,8 +39,13 @@ class LobbyContainer extends Component {
     )
   }
 }
+function mapStateToProps(state){
+  console.log("mstp",state)
+  console.log("mstp lobby",state.lobby)
+  return ({ rooms: state.lobby})
+}
 
-export default LobbyContainer
+export default connect(mapStateToProps, {addLobbyItems}) (LobbyContainer)
 
 // clickable => put request 
 // 

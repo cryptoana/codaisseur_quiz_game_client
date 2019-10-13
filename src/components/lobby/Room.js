@@ -29,7 +29,7 @@ class Room extends Component {
       // otherwise it executes the function immediately, on page load, before click
       <div onClick={() => this.onClick(this.props.room.id)}> 
           <h2>{this.props.room.name}</h2>
-          <h2>{this.props.room.status}</h2>
+          {/* <h2>{this.props.room.status}</h2> */}
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Scoreboard from './Scoreboard'
 import Quiz from './Quiz'
-import CheckAnswer from './CheckAnswer'
+import CheckAnswer from './CorrectAnswer'
 
 class GameContainer extends Component {
   render () {

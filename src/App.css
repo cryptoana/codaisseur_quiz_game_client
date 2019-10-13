@@ -20,3 +20,67 @@
 .App-link {
   color: #09d3ac;
 }
+
+body {
+  margin: 0 auto;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.form {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: darkgrey;
+  background-color: white
+}
+
+.button {
+  margin: 15px;
+  padding: 10px;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  min-width: 150px;
+  font-size: 20px;
+  display: block;
+}
+
+p {
+  font-size: 20px
+}
+
+@media all and (min-width: 480px) {
+  .Signup {
+    padding: 60px 0;
+  }
+
+  .Signup form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+.Signup form span.help-block {
+  font-size: 14px;
+  padding-bottom: 10px;
+  color: #999;
+}
+
+input {
+  display: block;
+}
+
+.room {
+  font-size: 20;
+  display: block;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px
+}
+
+.createRoom {
+  padding-left: 10px;
+}
